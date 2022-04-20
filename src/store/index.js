@@ -34,7 +34,7 @@ const persistConfig = {
   whitelist: ["profile"],
 };
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   profile: profileReducer,
   conversations: conversationsReducer,
   messages: messagesReducer,
@@ -46,7 +46,7 @@ export const store = createStore(
   compose(
     applyMiddleware(
       crashReporter, 
-      thunk.withExtraArgument({ getPublicGistsApi, searchGistsByNameApi }),
+      thunk.withExtraArgument(apis),
       logger, 
       botMessage, 
       timeScheduler),
